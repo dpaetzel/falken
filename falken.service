@@ -1,12 +1,12 @@
 [Unit]
-Description=Start falken-recorder on boot
+Description=Start record-falken on boot
 
 Wants=network.target
 After=syslog.target network-online.target
 
 [Service]
 Type=simple
-ExecStart=/home/david/falken/falken-recorder
+ExecStart=/home/david/falken/record-falken
 Restart=on-failure
 RestartSec=60
 KillMode=mixed
