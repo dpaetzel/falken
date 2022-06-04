@@ -1,0 +1,15 @@
+[Unit]
+Description=Start falken-recorder on boot
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/david/falken/falken-recorder
+Restart=on-failure
+RestartSec=60
+KillMode=mixed
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+
+
+while true
+    set hour (date +%H)
+    if test "$hour" -gt 5 -a "$hour" -lt 22
+        set fname (date +%F-%H-%M-%S)\ Falken.ts
+        ffmpeg -i "https://h031.video-stream-hosting.de/wsgs-live/_definst_/smil:Falken.smil/playlist.m3u8?&ref=start.video-stream-hosting.de&seid=166882" -c copy -t 00:30:00 "$fname"
+        # TODO Add an external disk (but requires properly powered USB hub)
+        # cp "$fname" /mnt/… ;and rm "$fname"
+    # Only check every 10 minutes whether to start a recording.
+    else
+        sleep 600
+    end
+end
