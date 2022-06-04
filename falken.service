@@ -10,6 +10,7 @@ ExecStart=/home/david/falken/falken-recorder
 Restart=on-failure
 RestartSec=60
 KillMode=mixed
+User=david
 
 [Install]
 WantedBy=multi-user.target
