@@ -1,0 +1,17 @@
+#!/usr/bin/env fish
+
+
+# Exclude the last of the files since that one is probably written to right now.
+set exclude (ssh rpi ls '$HOME/recordings' | tail -1)
+
+
+echo "Excluding most recent file (probably being written to right now):"
+echo "$exclude"
+echo
+echo "Will transfer these files:"
+rsync --dry-run -avh --exclude="$exclude" 'david@raspberrypi:recordings/*' .
+read --prompt-str "Press Enter to continue, Ctrl-C to abort"
+
+
+and mkdir -p recordings
+and rsync -avh --remove-source-files --exclude="$exclude" 'david@raspberrypi:recordings/*' recordings/
