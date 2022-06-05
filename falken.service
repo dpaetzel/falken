@@ -9,7 +9,6 @@ Type=simple
 ExecStart=/home/david/falken/record-falken
 Restart=on-failure
 RestartSec=60
-KillMode=mixed
 User=david
 
 [Install]
