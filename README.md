@@ -45,6 +45,9 @@ sudo raspi-config
 Within that tool, navigate to *Interfacing options*, then activate *SSH*.
 
 
+Optional: Set time zone by going into *Localisation Options*.
+
+
 Optional: On your local machine, copy SSH key using
 
 ```bash
