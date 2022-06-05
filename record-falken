@@ -21,6 +21,8 @@ while true
         # cp "$fname" /mnt/… ;and rm "$fname"
     # Only check every 10 minutes whether to start a recording.
     else
+        echo "Won't start a recording at" (date +%H:%M) "(too early or too late)."
+        echo "Waiting 10 min before trying again."
         sleep 600
     end
 end
