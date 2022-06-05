@@ -63,6 +63,13 @@ sudo apt-get install mosh
 ```
 
 
+Optional: Install fish, change default shell to fish.
+
+```bash
+chsh david -s /usr/bin/fish
+```
+
+
 From now on: Just login via SSH.
 
 ```bash
