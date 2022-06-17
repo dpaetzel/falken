@@ -114,3 +114,37 @@ sudo systemctl status falken
 sleep 10
 ls $HOME/recordings
 ```
+
+
+## Add external hard drive
+
+
+If you have an external hard drive (note, though, that the Raspberry Pi does not
+provide enough power for USB HDDs by itself, you need a powered USB hub or
+similar—I'm currently using [this
+AUKEY one](https://www.kaufland.de/product/399836070/) which cannot be found on the
+manufacturer's website any more) you can make the Raspberry Pi mount it on boot
+as follows.
+
+
+Add the mount point:
+
+```bash
+sudo mkdir /mnt/falken
+```
+
+
+Find out the disk label (in my case, the disk is named `falken`), e.g. by
+looking into `/dev/disk/by-label`.
+
+
+Add a line to `/etc/fstab` (substituting your disk's label where I wrote
+`falken` as well as your chosen mount point for `/mnt/falken`):
+
+```
+LABEL=falken /mnt/falken ntfs defaults,user 0 2
+```
+
+
+**Important: Adjust the `ext_dir` path in `record-falken` if your mount point is
+named differently.**

@@ -2,13 +2,25 @@
 
 
 set rec_dir "$HOME/recordings"
+set ext_dir "/mnt/falken/recordings"
 mkdir -p "$rec_dir"
+
+
+# This is meant to fail if external storage is not connected. /mnt/falken should
+# in that case not be writeable for users.
+mkdir -p "$ext_dir"
 
 
 while true
     set hour (date +%H)
     if test "$hour" -gt 4 -a "$hour" -lt 22
-        set fname "$rec_dir"/(date +%F-%H-%M-%S)\ Falken.ts
+        if test -d "$ext_dir"
+            echo "Recording to external storage."
+            set fname "$ext_dir"/(date +%F-%H-%M-%S)\ Falken.ts
+        else
+            echo "Recording to internal storage."
+            set fname "$rec_dir"/(date +%F-%H-%M-%S)\ Falken.ts
+        end
         echo "Trying to start recording of $fname."
         ffmpeg -loglevel warning -i "https://h031.video-stream-hosting.de/wsgs-live/_definst_/smil:Falken.smil/playlist.m3u8?&ref=start.video-stream-hosting.de&seid=166882" -c copy -t 00:30:00 "$fname"
         # If ffmpeg failed, wait a minute before trying again.
