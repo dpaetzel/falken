@@ -3,6 +3,7 @@
 
 set rec_dir "$HOME/recordings"
 set ext_dir "/mnt/falken/recordings"
+set ext_dir2 "/mnt/falken2/recordings"
 mkdir -p "$rec_dir"
 
 
@@ -17,6 +18,9 @@ while true
         if test -d "$ext_dir"
             echo "Recording to external storage."
             set fname "$ext_dir"/(date +%F-%H-%M-%S)\ Falken.ts
+        else if test -d "$ext_dir2"
+            echo "Recording to external storage."
+            set fname "$ext_dir2"/(date +%F-%H-%M-%S)\ Falken.ts
         else
             echo "Recording to internal storage."
             set fname "$rec_dir"/(date +%F-%H-%M-%S)\ Falken.ts
