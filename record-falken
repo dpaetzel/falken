@@ -10,6 +10,7 @@ mkdir -p "$rec_dir"
 # This is meant to fail if external storage is not connected. /mnt/falken should
 # in that case not be writeable for users.
 mkdir -p "$ext_dir"
+mkdir -p "$ext_dir2"
 
 
 while true
